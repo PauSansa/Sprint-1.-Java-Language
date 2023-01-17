@@ -21,4 +21,7 @@ public abstract class Noticia {
     public int getPrice() {
         return price;
     }
+
+    public abstract int calcularPreu();
+    public abstract int calcularPuntuacio();
 }
