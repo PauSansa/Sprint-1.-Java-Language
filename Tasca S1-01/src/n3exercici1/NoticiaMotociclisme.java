@@ -8,6 +8,7 @@ public class NoticiaMotociclisme extends Noticia{
     public NoticiaMotociclisme(String titular, String text,Redactor redactor,String equip) {
         this.titular = titular;
         this.text = text;
+        this.redactor = redactor;
 
         this.equip = equip;
 

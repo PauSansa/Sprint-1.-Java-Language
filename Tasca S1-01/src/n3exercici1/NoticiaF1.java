@@ -8,6 +8,7 @@ public class NoticiaF1 extends Noticia{
     public NoticiaF1(String titular, String text,Redactor redactor,String escuderia) {
         this.titular = titular;
         this.text = text;
+        this.redactor = redactor;
 
         this.escuderia = escuderia;
 

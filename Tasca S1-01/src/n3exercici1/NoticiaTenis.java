@@ -10,6 +10,7 @@ public class NoticiaTenis extends Noticia{
     public NoticiaTenis(String titular, String text,Redactor redactor,String competicio, String tenista) {
         this.titular = titular;
         this.text = text;
+        this.redactor = redactor;
 
         this.competicio = competicio;
         this.tenista = tenista;

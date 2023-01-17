@@ -11,6 +11,7 @@ public class NoticiaBasquet extends Noticia{
     public NoticiaBasquet(String titular, String text,Redactor redactor, String competicio, String club) {
         this.titular = titular;
         this.text = text;
+        this.redactor = redactor;
 
         this.competicio = competicio;
         this.club = club;

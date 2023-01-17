@@ -36,6 +36,17 @@ public class Main {
                     break;
                 case 4:
                     eliminarNoticia();
+                    break;
+                case 5:
+                    mostrarNoticies();
+                    break;
+                case 6:
+                    mostrarScore();
+                    break;
+                case 7:
+                    mostrarPreu();
+                    break;
+
             }
 
         }
@@ -236,5 +247,98 @@ public class Main {
 
 
 
+    }
+
+    public static void mostrarNoticies() {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Noticia> noticiesRedactor = new ArrayList<>();
+        Redactor redactor = null;
+
+        System.out.println("Introdueix el Dni del redactor de les noticies a mostrar \n");
+        String dni = sc.nextLine();
+        for (Redactor r : redactors) {
+            if (r.dni.equals(dni)) {
+                redactor = r;
+            }
+        }
+        if (redactor == null) {
+            System.out.println("No s'ha trobat el redactor \n");
+            return;
+        }
+
+        for (Noticia n : noticies) {
+            if (n.redactor.equals(redactor)){
+                noticiesRedactor.add(n);
+            }
+        }
+
+        for (Noticia nr : noticiesRedactor) {
+            System.out.printf("%s por %s \n",nr.titular,nr.redactor.name);
+        }
+
+    }
+
+    public static void mostrarScore() {
+        Scanner sc = new Scanner(System.in);
+        Redactor redactor = null;
+        Noticia noticia = null;
+
+        System.out.println("DNI del Redactor de la noticia calcular Score \n");
+        String dni = sc.nextLine();
+        for (Redactor r : redactors) {
+            if (r.dni.equals(dni)) {
+                redactor = r;
+            }
+        }
+        if (redactor == null) {
+            System.out.println("Redactor no trobat");
+            return;
+        }
+
+        System.out.println("Titular de la noticia a calcular Score: \n");
+        String titular = sc.nextLine();
+        for (Noticia n : noticies) {
+            if (n.titular.equals(titular) && n.redactor.equals(redactor)) {
+                noticia = n;
+            }
+        }
+        if (noticia == null) {
+            System.out.println("Noticia no trobada");
+            return;
+        }
+
+        System.out.printf("La score de la noticia es: %s", noticia.score);
+    }
+
+    public static void mostrarPreu(){
+        Scanner sc = new Scanner(System.in);
+        Redactor redactor = null;
+        Noticia noticia = null;
+
+        System.out.println("DNI del Redactor de la noticia calcular Preu \n");
+        String dni = sc.nextLine();
+        for (Redactor r : redactors) {
+            if (r.dni.equals(dni)) {
+                redactor = r;
+            }
+        }
+        if (redactor == null) {
+            System.out.println("Redactor no trobat");
+            return;
+        }
+
+        System.out.println("Titular de la noticia a calcular Preu: \n");
+        String titular = sc.nextLine();
+        for (Noticia n : noticies) {
+            if (n.titular.equals(titular) && n.redactor.equals(redactor)) {
+                noticia = n;
+            }
+        }
+        if (noticia == null) {
+            System.out.println("Noticia no trobada");
+            return;
+        }
+
+        System.out.printf("El preu de la noticia es: %s \n", noticia.calcularPreu());
     }
 }
