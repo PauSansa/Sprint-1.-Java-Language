@@ -25,7 +25,7 @@ public class Main {
 
             switch (opt) {
                 case 1:
-                    redactors.add(creaRedactor());
+                    creaRedactor();
                     break;
                 case 2:
                     eliminaRedactor();
@@ -37,7 +37,7 @@ public class Main {
         }
     }
 
-    public static Redactor creaRedactor() {
+    public static void creaRedactor() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca Nombre: \n");
         String nombre = sc.nextLine();
@@ -46,7 +46,7 @@ public class Main {
         String dni = sc.nextLine();
 
         Redactor redactor = new Redactor(nombre, dni);
-        return redactor;
+        redactors.add(redactor);
     }
 
     public static void eliminaRedactor(){
@@ -69,6 +69,15 @@ public class Main {
     }
 
     public static void introduirNoticia(){
+        //Inicialitzo les variables
+        String competicio;
+        String club;
+        String jugador;
+        String tenista;
+        String escuderia;
+        String equip;
+
+
         Scanner sc = new Scanner(System.in);
         boolean found = false;
         Redactor redactor = null;
@@ -110,18 +119,81 @@ public class Main {
                 //Case Noticia Futbol
                 //Parametros Noticia: String titular, String text, Redactor redactor
                 //Parametros Futbol: String competicio, String club, String jugador
+                Scanner sc1 = new Scanner(System.in);
+                System.out.println("Introdueix la competicio:");
+                competicio = sc1.nextLine();
 
-                System.out.println("Introduzca competicion");
-                String competicio = sc.nextLine();
+                System.out.println("Introdueix el club:");
+                club = sc1.nextLine();
 
-                System.out.println("Introduzca club");
-                String club = sc.nextLine();
-
-                System.out.println("Introduzca jugador");
-                String jugador = sc.nextLine();
+                System.out.println("Introdueix el jugador:");
+                jugador = sc1.nextLine();
 
                 NoticiaFutbol noticiaF = new NoticiaFutbol(titular,text,redactor,competicio,club,jugador);
                 noticies.add(noticiaF);
+                sc1.close();
+                break;
+            case 2:
+                //Case Noticia Basquet
+                //Parametros Noticia: String titular, String text, Redactor redactor
+                //Parametros Basquet: String competicio, String club
+                Scanner sc2 = new Scanner(System.in);
+
+                System.out.println("Introdueix la competicio");
+                competicio = sc2.nextLine();
+
+                System.out.println("Introdueix el club");
+                club = sc2.nextLine();
+
+                NoticiaBasquet noticiaB = new NoticiaBasquet(titular, text, redactor, competicio, club);
+                noticies.add(noticiaB);
+                sc2.close();
+                break;
+            case 3:
+                //Case Noticia Tenis
+                //Parametros Noticia: String titular, String text, Redactor redactor
+                //Parametros Tenis: String competicio, String tenista
+                Scanner sc3 = new Scanner(System.in);
+
+                System.out.println("Introdueix la competicio");
+                competicio = sc3.nextLine();
+
+                System.out.println("Introdueix el tenista");
+                tenista = sc3.nextLine();
+
+                NoticiaTenis noticiaT = new NoticiaTenis(titular, text, redactor, competicio, tenista);
+                noticies.add(noticiaT);
+                sc3.close();
+                break;
+            case 4:
+                //Case Noticia F1
+                //Parametros Noticia: String titular, String text, Redactor redactor
+                //Parametros F1: String escuderia
+
+                Scanner sc4 = new Scanner(System.in);
+
+                System.out.println("Introdueix l'escuderia");
+                escuderia = sc4.nextLine();
+
+                NoticiaF1 noticia1F = new NoticiaF1(titular, text, redactor, escuderia);
+                noticies.add(noticia1F);
+                sc4.close();
+                break;
+            case 5:
+                //Case Motociclisme
+                //Parametros Noticia: String titular, String text, Redactor redactor
+                //Parametros Motociclisme: String equip
+
+                Scanner sc5 = new Scanner(System.in);
+
+                System.out.println("Introdueix l'equip:");
+                equip = sc5.nextLine();
+
+                NoticiaMotociclisme noticiaM = new NoticiaMotociclisme(titular, text, redactor, equip);
+                noticies.add(noticiaM);
+                sc5.close();
+                break;
+
         }
 
 
