@@ -27,7 +27,7 @@ public class Main {
                     redactors.add(creaRedactor());
                     break;
                 case 2:
-                    System.out.println("Has escogido la opcion 2");
+                    eliminaRedactor();
             }
         }
     }
@@ -46,6 +46,20 @@ public class Main {
 
     public static void eliminaRedactor(){
         Scanner sc = new Scanner(System.in);
+        boolean found = false;
+
         System.out.println("Introduzca Dni del Redactor a borrar: \n");
+        String dni = sc.nextLine();
+
+        for (Redactor r : redactors) {
+            if (r.dni.equals(dni)) {
+                redactors.remove(r);
+                found = true;
+                System.out.println("Redactor borrado con exito");
+            }
+        }
+        if (!found) {
+            System.out.println("No se ha encontrado el redactor");
+        }
     }
 }
