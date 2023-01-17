@@ -1,9 +1,10 @@
 package n3exercici1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
+    static ArrayList<Redactor> redactors = new ArrayList<>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -23,7 +24,7 @@ public class Main {
 
             switch (opt) {
                 case 1:
-                    creaRedactor();
+                    redactors.add(creaRedactor());
                     break;
                 case 2:
                     System.out.println("Has escogido la opcion 2");
@@ -31,16 +32,20 @@ public class Main {
         }
     }
 
-    public static void creaRedactor() {
+    public static Redactor creaRedactor() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduzca Nombre: ");
-        System.out.println();
+        System.out.println("Introduzca Nombre: \n");
         String nombre = sc.nextLine();
 
-        System.out.println("Introduzca Dni: /n");
-        System.out.println();
+        System.out.println("Introduzca Dni: \n");
         String dni = sc.nextLine();
 
         Redactor redactor = new Redactor(nombre, dni);
+        return redactor;
+    }
+
+    public static void eliminaRedactor(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduzca Dni del Redactor a borrar: \n");
     }
 }
