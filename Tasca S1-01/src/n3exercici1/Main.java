@@ -10,6 +10,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
+
             System.out.println();
             System.out.println("*.-MENU EXERCICI-.*");
             System.out.println("1.- Introduir redactor.");
@@ -33,7 +34,10 @@ public class Main {
                 case 3:
                     introduirNoticia();
                     break;
+                case 4:
+                    eliminarNoticia();
             }
+
         }
     }
 
@@ -60,11 +64,11 @@ public class Main {
             if (r.dni.equals(dni)) {
                 redactors.remove(r);
                 found = true;
-                System.out.println("Redactor borrado con exito");
+                System.out.println("Redactor borrado con exito \n");
             }
         }
         if (!found) {
-            System.out.println("No se ha encontrado el redactor");
+            System.out.println("No se ha encontrado el redactor \n \n");
         }
     }
 
@@ -131,7 +135,6 @@ public class Main {
 
                 NoticiaFutbol noticiaF = new NoticiaFutbol(titular,text,redactor,competicio,club,jugador);
                 noticies.add(noticiaF);
-                sc1.close();
                 break;
             case 2:
                 //Case Noticia Basquet
@@ -147,7 +150,6 @@ public class Main {
 
                 NoticiaBasquet noticiaB = new NoticiaBasquet(titular, text, redactor, competicio, club);
                 noticies.add(noticiaB);
-                sc2.close();
                 break;
             case 3:
                 //Case Noticia Tenis
@@ -163,7 +165,6 @@ public class Main {
 
                 NoticiaTenis noticiaT = new NoticiaTenis(titular, text, redactor, competicio, tenista);
                 noticies.add(noticiaT);
-                sc3.close();
                 break;
             case 4:
                 //Case Noticia F1
@@ -177,7 +178,6 @@ public class Main {
 
                 NoticiaF1 noticia1F = new NoticiaF1(titular, text, redactor, escuderia);
                 noticies.add(noticia1F);
-                sc4.close();
                 break;
             case 5:
                 //Case Motociclisme
@@ -191,10 +191,49 @@ public class Main {
 
                 NoticiaMotociclisme noticiaM = new NoticiaMotociclisme(titular, text, redactor, equip);
                 noticies.add(noticiaM);
-                sc5.close();
                 break;
 
         }
+
+
+    }
+
+    public static void eliminarNoticia() {
+        Redactor redactor = null;
+        boolean foundR = false;
+        boolean foundN = false;
+        Noticia noticia = null;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("DNI del Redactor de la noticia a eliminar \n");
+        String dni = sc.nextLine();
+        for (Redactor r : redactors) {
+            if (r.dni.equals(dni)) {
+                redactor = r;
+                foundR = true;
+            }
+        }
+        if (redactor == null) {
+            System.out.println("Redactor no trobat");
+            return;
+        }
+
+        System.out.println("Titular de la noticia a eliminar: \n");
+        String titular = sc.nextLine();
+        for (Noticia n : noticies) {
+            if (n.titular.equals(titular) && n.redactor.equals(redactor)) {
+                noticia = n;
+            }
+        }
+        if (noticia == null) {
+            System.out.println("Noticia no trobada");
+            return;
+        }
+
+        noticies.remove(noticia);
+
+
+
 
 
     }
