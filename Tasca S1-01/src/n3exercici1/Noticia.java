@@ -1,26 +1,13 @@
 package n3exercici1;
 
 public abstract class Noticia {
-    private String titular;
-    private String text;
-    private int score;
-    private int price;
+     String titular;
+     String text;
+     int score;
+     int price;
+     Redactor redactor;
 
-    public String getTitular() {
-        return titular;
-    }
 
-    public String getText() {
-        return text;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public int getPrice() {
-        return price;
-    }
 
     public abstract int calcularPreu();
     public abstract int calcularPuntuacio();

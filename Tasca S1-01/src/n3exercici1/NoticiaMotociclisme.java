@@ -5,8 +5,14 @@ import java.util.HashMap;
 
 public class NoticiaMotociclisme extends Noticia{
     String equip;
-    public NoticiaMotociclisme(String equip) {
+    public NoticiaMotociclisme(String titular, String text,Redactor redactor,String equip) {
+        this.titular = titular;
+        this.text = text;
+
         this.equip = equip;
+
+        this.price = calcularPreu();
+        this.score = calcularPuntuacio();
     }
 
     @Override

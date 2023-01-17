@@ -8,9 +8,15 @@ public class NoticiaBasquet extends Noticia{
     String competicio;
     String club;
 
-    public NoticiaBasquet(String competicio, String club) {
+    public NoticiaBasquet(String titular, String text,Redactor redactor, String competicio, String club) {
+        this.titular = titular;
+        this.text = text;
+
         this.competicio = competicio;
         this.club = club;
+
+        this.price = calcularPreu();
+        this.score = calcularPuntuacio();
     }
 
     @Override

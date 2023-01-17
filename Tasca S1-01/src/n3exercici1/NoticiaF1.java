@@ -5,8 +5,14 @@ import java.util.HashMap;
 
 public class NoticiaF1 extends Noticia{
     String escuderia;
-    public NoticiaF1(String escuderia) {
+    public NoticiaF1(String titular, String text,Redactor redactor,String escuderia) {
+        this.titular = titular;
+        this.text = text;
+
         this.escuderia = escuderia;
+
+        this.price = calcularPreu();
+        this.score = calcularPuntuacio();
     }
 
     @Override

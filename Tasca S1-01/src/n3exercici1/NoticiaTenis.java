@@ -7,9 +7,15 @@ public class NoticiaTenis extends Noticia{
     String competicio;
     String tenista;
 
-    public NoticiaTenis(String competicio, String tenista) {
+    public NoticiaTenis(String titular, String text,Redactor redactor,String competicio, String tenista) {
+        this.titular = titular;
+        this.text = text;
+
         this.competicio = competicio;
         this.tenista = tenista;
+
+        this.price = calcularPreu();
+        this.score = calcularPuntuacio();
     }
 
     @Override

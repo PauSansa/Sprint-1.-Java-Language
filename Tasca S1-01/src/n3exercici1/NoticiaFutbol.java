@@ -8,10 +8,17 @@ public class NoticiaFutbol extends Noticia{
     String club;
     String jugador;
 
-    public NoticiaFutbol(String competicio, String club, String jugador) {
+    public NoticiaFutbol(String titular, String text,Redactor redactor,String competicio, String club, String jugador) {
+        this.titular = titular;
+        this.text = text;
+        this.redactor = redactor;
+
         this.competicio = competicio;
         this.club = club;
         this.jugador = jugador;
+
+        this.price = calcularPreu();
+        this.score = calcularPuntuacio();
     }
 
     @Override
