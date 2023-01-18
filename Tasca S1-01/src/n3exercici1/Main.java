@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static ArrayList<Redactor> redactors = new ArrayList<>();
-    static ArrayList<Noticia> noticies = new ArrayList<>();
+    private static ArrayList<Redactor> redactors = new ArrayList<>();
+    private static ArrayList<Noticia> noticies = new ArrayList<>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -340,5 +340,21 @@ public class Main {
         }
 
         System.out.printf("El preu de la noticia es: %s \n", noticia.calcularPreu());
+    }
+
+    public static ArrayList<Redactor> getRedactors() {
+        return redactors;
+    }
+
+    public static void setRedactors(ArrayList<Redactor> redactors) {
+        Main.redactors = redactors;
+    }
+
+    public static ArrayList<Noticia> getNoticies() {
+        return noticies;
+    }
+
+    public static void setNoticies(ArrayList<Noticia> noticies) {
+        Main.noticies = noticies;
     }
 }

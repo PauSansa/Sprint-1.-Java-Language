@@ -1,11 +1,11 @@
 package n3exercici1;
 
 public abstract class Noticia {
-     private String titular;
-     private String text;
-     private int score;
-     private int price;
-     private Redactor redactor;
+     protected String titular;
+     protected String text;
+     protected int score;
+     protected int price;
+     protected Redactor redactor;
 
     public String getTitular() {
         return titular;
