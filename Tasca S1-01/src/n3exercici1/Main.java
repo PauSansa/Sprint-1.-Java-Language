@@ -229,7 +229,7 @@ public class Main {
         System.out.println("Titular de la noticia a eliminar: \n");
         String titular = sc.nextLine();
         for (Noticia n : noticies) {
-            if (n.titular.equals(titular) && n.redactor.equals(redactor)) {
+            if (n.getTitular().equals(titular) && n.getRedactor().equals(redactor)) {
                 noticia = n;
             }
         }
@@ -264,14 +264,14 @@ public class Main {
         }
 
         for (Noticia n : noticies) {
-            if (n.redactor.equals(redactor)){
+            if (n.getRedactor().equals(redactor)){
                 noticiesRedactor.add(n);
             }
         }
 
         for (Noticia nr : noticiesRedactor) {
             System.out.println();
-            System.out.printf("%s por %s \n",nr.titular,nr.redactor.name);
+            System.out.printf("%s por %s \n", nr.getTitular(), nr.getRedactor().name);
             System.out.println();
             System.out.println("   ################################   ");
         }
@@ -298,7 +298,7 @@ public class Main {
         System.out.println("Titular de la noticia a calcular Score: \n");
         String titular = sc.nextLine();
         for (Noticia n : noticies) {
-            if (n.titular.equals(titular) && n.redactor.equals(redactor)) {
+            if (n.getTitular().equals(titular) && n.getRedactor().equals(redactor)) {
                 noticia = n;
             }
         }
@@ -307,7 +307,7 @@ public class Main {
             return;
         }
 
-        System.out.printf("La score de la noticia es: %s", noticia.score);
+        System.out.printf("La score de la noticia es: %s", noticia.getScore());
     }
 
     public static void mostrarPreu(){
@@ -330,7 +330,7 @@ public class Main {
         System.out.println("Titular de la noticia a calcular Preu: \n");
         String titular = sc.nextLine();
         for (Noticia n : noticies) {
-            if (n.titular.equals(titular) && n.redactor.equals(redactor)) {
+            if (n.getTitular().equals(titular) && n.getRedactor().equals(redactor)) {
                 noticia = n;
             }
         }
