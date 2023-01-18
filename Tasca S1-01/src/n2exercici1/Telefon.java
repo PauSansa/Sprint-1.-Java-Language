@@ -1,8 +1,8 @@
 package n2exercici1;
 
 public abstract class Telefon {
-    String marca;
-    String model;
+    private String marca;
+    private String model;
 
     public Telefon(String marca, String model) {
         this.marca = marca;

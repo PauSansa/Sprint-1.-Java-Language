@@ -2,11 +2,11 @@ package n1exercici2;
 
 public class Cotxe {
     //No es pot modificar en el codi ni inicialitzarlo al constructor
-    static final String marca = "Audi";
+    private static final String marca = "Audi";
     //Es pot modificar en el codi pero no inicialitzarlo en el constructor
-    static String model = "A3";
+    private static String model = "A3";
     //No es pot modificar en el codi pero es pot inicialitzar en el constructor
-    final int potencia;
+    private final int potencia;
 
     public Cotxe(int potencia) {
         this.potencia = potencia;
