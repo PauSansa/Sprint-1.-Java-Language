@@ -7,7 +7,7 @@ public class Main {
     static ArrayList<Venda> vendes = new ArrayList<>();
     static ArrayList<Producte> productes = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws VendaBuidaException {
         //Testing, no final s'ha de cambiar y crear menu
         Producte producte1 = new Producte("Rellotge", 28.9);
         Producte producte2 = new Producte("Play", 400);
@@ -15,7 +15,8 @@ public class Main {
         productes.add(producte2);
 
         creaVenda();
-        System.out.println("Breakpoint");
+        Venda prueba = vendes.get(0);
+        prueba.calcularTotal();
     }
 
     public static void creaVenda(){
