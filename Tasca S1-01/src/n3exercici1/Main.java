@@ -211,8 +211,6 @@ public class Main {
 
     public static void eliminarNoticia() {
         Redactor redactor = null;
-        boolean foundR = false;
-        boolean foundN = false;
         Noticia noticia = null;
         Scanner sc = new Scanner(System.in);
 
@@ -221,7 +219,6 @@ public class Main {
         for (Redactor r : redactors) {
             if (r.dni.equals(dni)) {
                 redactor = r;
-                foundR = true;
             }
         }
         if (redactor == null) {
@@ -273,7 +270,10 @@ public class Main {
         }
 
         for (Noticia nr : noticiesRedactor) {
+            System.out.println();
             System.out.printf("%s por %s \n",nr.titular,nr.redactor.name);
+            System.out.println();
+            System.out.println("   ################################   ");
         }
 
     }
