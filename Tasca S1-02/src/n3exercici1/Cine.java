@@ -1,12 +1,11 @@
 package n3exercici1;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 public class Cine {
     private int nFiles;
     private int nSeients;
-    private GestioButaques gestioButaques;
+    private final GestioButaques gestioButaques;
 
     public Cine(){
         gestioButaques = new GestioButaques();
