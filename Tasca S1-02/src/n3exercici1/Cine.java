@@ -14,11 +14,14 @@ public class Cine {
     }
 
     public void iniciar() {
-        int opt = menu();
-        switch (opt) {
-            case 3:
-                reservarButaca();
+        while (true) {
+            int opt = menu();
+            switch (opt) {
+                case 3:
+                    reservarButaca();
+            }
         }
+
     }
 
     private void demanarDadesInicials(){
@@ -56,7 +59,8 @@ public class Cine {
         seient = introduirSeient();
         persona = introduirPersona();
 
-
+        Butaca butaca = new Butaca(fila,seient,persona);
+        gestioButaques.afegirButaques(butaca);
 
 
 
