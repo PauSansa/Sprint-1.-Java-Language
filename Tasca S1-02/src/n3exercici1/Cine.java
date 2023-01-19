@@ -1,5 +1,6 @@
 package n3exercici1;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Cine {
@@ -16,11 +17,23 @@ public class Cine {
         while (true) {
             int opt = menu();
             switch (opt) {
+                case 1:
+                    mostrarButaques();
+                    break;
+                case 2:
+                    mostrarButaquesPersona();
+                    break;
                 case 3:
                     reservarButaca();
                     break;
+                case 4:
+                    anularReserva();
+                    break;
                 case 5:
                     anularReservaPersona();
+                    break;
+                case 0:
+                    return;
             }
         }
 
@@ -52,6 +65,28 @@ public class Cine {
 
     }
 
+    private void mostrarButaques() {
+        for (Butaca b : this.gestioButaques.getButaques()) {
+            System.out.printf("\n Fila: %s Seient: %s Ocupat per %s", b.getFila(),b.getSeient(), b.getPersona());
+        }
+    }
+
+    private void mostrarButaquesPersona() {
+        String persona = introduirPersona();
+        boolean trobat = false;
+
+        for (Butaca b : this.gestioButaques.getButaques()) {
+            if (b.getPersona().equals(persona))
+            System.out.printf("\n Fila: %s Seient: %s ", b.getFila(),b.getSeient());
+            trobat = true;
+        }
+
+        if (!trobat) {
+            System.out.println("\n No s'ha trobat cap butaca reservada per a aquesta persona");
+        }
+
+    }
+
     private void reservarButaca() {
         int fila;
         int seient;
@@ -65,12 +100,20 @@ public class Cine {
         this.gestioButaques.afegirButaques(butaca);
     }
 
+    private void anularReserva() {
+        int fila = introduirFila();
+        int seient = introduirSeient();
+
+        this.gestioButaques.eliminarButaques(fila, seient);
+    }
+
     private void anularReservaPersona(){
         boolean eliminat = false;
         String persona = introduirPersona();
 
-        //Modificar estructura, al borrar algo del array sobre el que esta iterant falla
-        for (Butaca b : gestioButaques.butacas){
+        Iterator<Butaca> butacaIterator = this.gestioButaques.getButaques().iterator();
+        while (butacaIterator.hasNext()) {
+            Butaca b = butacaIterator.next();
             if (b.getPersona().equals(persona)) {
                 this.gestioButaques.eliminarButaques(b.getFila(), b.getSeient());
                 eliminat = true;
@@ -80,7 +123,6 @@ public class Cine {
         if (!eliminat) {
             System.out.println("No he trobat cap reserva a aquell nom!");
         }
-
 
     }
 

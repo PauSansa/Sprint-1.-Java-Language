@@ -3,7 +3,7 @@ package n3exercici1;
 import java.util.ArrayList;
 
 public class GestioButaques {
-    ArrayList<Butaca> butacas;
+    private ArrayList<Butaca> butacas;
 
     public GestioButaques() {
         butacas = new ArrayList<>();
