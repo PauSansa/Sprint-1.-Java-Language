@@ -70,6 +70,7 @@ public class Cine {
         boolean eliminat = false;
         String persona = introduirPersona();
 
+        //Modificar estructura, al borrar algo del array sobre el que esta iterant falla
         for (Butaca b : gestioButaques.butacas){
             if (b.getPersona().equals(persona)) {
                 this.gestioButaques.eliminarButaques(b.getFila(), b.getSeient());
