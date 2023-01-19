@@ -12,4 +12,8 @@ public class GestioButaques {
     public ArrayList<Butaca> getButaques() {
         return butacas;
     }
+
+    public void afegirButaca(Butaca butaca) {
+
+    }
 }
