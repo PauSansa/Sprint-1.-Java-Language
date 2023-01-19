@@ -1,10 +1,11 @@
 package n3exercici1;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class Cine {
-    private int files;
-    private int seientsF;
+    private int nFiles;
+    private int nSeients;
     private GestioButaques gestioButaques;
 
     public Cine(){
@@ -13,7 +14,11 @@ public class Cine {
     }
 
     public void iniciar() {
-        menu();
+        int opt = menu();
+        switch (opt) {
+            case 3:
+                reservarButaca();
+        }
     }
 
     private void demanarDadesInicials(){
@@ -23,8 +28,8 @@ public class Cine {
 
         int seientsF = entrysCine.llegirInt("\n Introdueixi el nombre de seients per fila \n");
 
-        this.files = files;
-        this.seientsF = seientsF;
+        this.nFiles = files;
+        this.nSeients = seientsF;
     }
 
     private int menu() {
@@ -42,20 +47,79 @@ public class Cine {
 
     }
 
-    //Despres de proves cambiar reservarButaca a private
-    public void reservarButaca() {
-        boolean correcteF = false;
-        boolean correcteB = false;
+    private void reservarButaca() {
         int fila;
-        int butaca;
+        int seient;
+        String persona;
 
-        while(!correcteF) {
+        fila = introduirFila();
+        seient = introduirSeient();
+        persona = introduirPersona();
+
+
+
+
+
+    }
+
+    private int introduirFila() {
+        boolean correcte = false;
+        int fila = 0;
+        while (!correcte) {
             try {
-                fila = entrysCine.llegirInt("Introdueix fila: \n");
-                correcteF = true;
+                fila = entrysCine.llegirInt("Introdueixi fila desitjada");
+
+                if (fila > this.nFiles) {
+                    throw new ExcepcioFilaIncorrecte();
+                } else {
+                    correcte = true;
+                }
+            } catch (ExcepcioFilaIncorrecte e){
+                System.out.printf("\n Aquesta fila no existeix, recorda que nomes tenim %s files", this.nFiles);
+            }
+        }
+        return fila;
+    }
+
+    private int introduirSeient(){
+        boolean correcte =false;
+        int seient = 0;
+        while (!correcte) {
+            try {
+                seient = entrysCine.llegirInt("Introdueixi seient desitgat");
+
+                if (seient > this.nSeients) {
+                    throw new ExcepcioSeientIncorrecte();
+                } else {
+                    correcte = true;
+                }
+            } catch (ExcepcioSeientIncorrecte e) {
+                System.out.printf("\n Aquest seient no existeix, recorda que nomes tenim %s seients", this.nSeients);
             }
         }
 
+        return seient;
+    }
 
+    private String introduirPersona() {
+        String persona = null;
+        boolean correcte = false;
+
+        while (!correcte) {
+            try {
+                persona = entrysCine.llegirString("Introdueix el nom de la Persona: \n");
+
+                if (persona.matches(".*[0-9].*")) {
+                    throw new ExcepcioNomIncorrecte();
+                } else {
+                    correcte = true;
+                }
+
+            } catch (ExcepcioNomIncorrecte e){
+                System.out.println("\n El nom es incorrecte, no pots introduir nombres!");
+            }
+        }
+
+        return persona;
     }
 }

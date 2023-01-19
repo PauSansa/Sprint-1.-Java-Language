@@ -3,17 +3,17 @@ package n3exercici1;
 public class Butaca {
     private final int fila;
     private final int seient;
-    private final String nPersona;
+    private final String persona;
 
-    public Butaca(int fila, int seient, String nPersona) {
+    public Butaca(int fila, int seient, String persona) {
         this.fila = fila;
         this.seient = seient;
-        this.nPersona = nPersona;
+        this.persona = persona;
     }
 
-    public boolean equals(Butaca b1, Butaca b2) {
+    public boolean equals(Butaca b1) {
 
-        if (b1.getFila() == b2.getFila() && b1.getSeient() == b2.getSeient()) {
+        if (this.fila == b1.getFila() && this.seient == b1.getSeient()) {
             return true;
         } else {
             return false;
@@ -29,7 +29,7 @@ public class Butaca {
         return seient;
     }
 
-    public String getnPersona() {
-        return nPersona;
+    public String persona() {
+        return persona;
     }
 }
