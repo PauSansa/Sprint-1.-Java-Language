@@ -4,9 +4,9 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class Entrada {
-    static Scanner sc = new Scanner(System.in);
 
     public static byte llegirByte(String missatge) {
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         byte valor = 0;
         while (!correcte) {
@@ -24,6 +24,7 @@ public class Entrada {
     }
 
     public static int llegirInt(String missatge) {
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         int valor = 0;
 
@@ -43,6 +44,7 @@ public class Entrada {
     }
 
     public static float llegirFloat(String missatge) {
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         float valor = 0;
 
@@ -61,6 +63,7 @@ public class Entrada {
     }
 
     public static double llegirDouble(String missatge) {
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         float valor = 0;
          while (!correcte) {
@@ -78,6 +81,7 @@ public class Entrada {
     }
 
     public static char llegirChar(String missatge) {
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         char valor = 0;
         String entrada;
@@ -102,6 +106,7 @@ public class Entrada {
     }
 
     public static String llegirString(String missatge){
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         String valor = null;
         while (!correcte) {
@@ -119,6 +124,7 @@ public class Entrada {
     }
 
     public static boolean llegirSiNo(String missatge){
+        Scanner sc = new Scanner(System.in);
         boolean correcte = false;
         boolean valor = false;
         String entrada;
