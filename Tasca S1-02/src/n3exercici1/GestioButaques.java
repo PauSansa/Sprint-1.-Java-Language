@@ -9,8 +9,19 @@ public class GestioButaques {
         butacas = new ArrayList<>();
     }
 
+    public int cercaButaques(int fila, int seient){
+        int result = -1;
+
+        for (Butaca b : this.butacas) {
+            if (b.getFila() == fila && b.getSeient() == seient) {
+                result = this.butacas.indexOf(b);
+            }
+        }
+
+        return result;
+    }
+
     public void eliminarButaques(int fila, int seient) {
-        Butaca butaca;
         int iButaca;
 
         iButaca = cercaButaques(fila, seient);
@@ -25,16 +36,23 @@ public class GestioButaques {
         }
     }
 
-    public int cercaButaques(int fila, int seient){
-        int result = -1;
-
-        for (Butaca b : this.butacas) {
-            if (b.getFila() == fila && b.getSeient() == seient) {
-                result = this.butacas.indexOf(b);
+    public void afegirButaques(Butaca butaca) {
+        boolean ocupat = false;
+        try {
+            for (Butaca b : this.butacas) {
+                if (b.getFila() == butaca.getFila() && b.getSeient() == butaca.getSeient()) {
+                    ocupat = true;
+                }
             }
+            if(ocupat) {
+                throw new ExcepcioButacaOcupada();
+            } else {
+                this.butacas.add(butaca);
+            }
+        } catch (ExcepcioButacaOcupada e) {
+            System.out.println("Aquesta butaca esta ocupada");
         }
 
-        return result;
     }
 
     public ArrayList<Butaca> getButaques() {
