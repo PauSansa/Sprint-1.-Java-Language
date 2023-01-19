@@ -29,7 +29,7 @@ public class Butaca {
         return seient;
     }
 
-    public String persona() {
+    public String getPersona() {
         return persona;
     }
 }

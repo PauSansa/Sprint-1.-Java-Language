@@ -19,6 +19,9 @@ public class Cine {
             switch (opt) {
                 case 3:
                     reservarButaca();
+                    break;
+                case 5:
+                    anularReservaPersona();
             }
         }
 
@@ -60,8 +63,23 @@ public class Cine {
         persona = introduirPersona();
 
         Butaca butaca = new Butaca(fila,seient,persona);
-        gestioButaques.afegirButaques(butaca);
+        this.gestioButaques.afegirButaques(butaca);
+    }
 
+    private void anularReservaPersona(){
+        boolean eliminat = false;
+        String persona = introduirPersona();
+
+        for (Butaca b : gestioButaques.butacas){
+            if (b.getPersona().equals(persona)) {
+                this.gestioButaques.eliminarButaques(b.getFila(), b.getSeient());
+                eliminat = true;
+            }
+        }
+
+        if (!eliminat) {
+            System.out.println("No he trobat cap reserva a aquell nom!");
+        }
 
 
     }
@@ -111,7 +129,7 @@ public class Cine {
 
         while (!correcte) {
             try {
-                persona = entrysCine.llegirString("Introdueix el nom de la Persona: \n");
+                persona = entrysCine.llegirString("Introdueix el nom de la Persona: \n").toLowerCase();
 
                 if (persona.matches(".*[0-9].*")) {
                     throw new ExcepcioNomIncorrecte();
