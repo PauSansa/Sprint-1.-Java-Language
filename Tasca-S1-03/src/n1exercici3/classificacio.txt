@@ -1,3 +1,4 @@
 primera ha tret 0 punts 
 segona ha tret 0 punts 
 pau ha tret 0 punts 
+Correcta ha tret 1 punts 
