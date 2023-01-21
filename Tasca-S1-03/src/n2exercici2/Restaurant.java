@@ -1,5 +1,6 @@
 package n2exercici2;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Restaurant {
@@ -11,10 +12,19 @@ public class Restaurant {
         this.puntuacio = puntuacio;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public int getPuntuacio() {
+        return puntuacio;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(nom, puntuacio);
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -30,4 +40,6 @@ public class Restaurant {
             return false;
         }
     }
+
+
 }
