@@ -1,4 +1,4 @@
-package n2exercici1;
+package n1exercici2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

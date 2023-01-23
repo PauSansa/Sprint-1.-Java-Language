@@ -1,4 +1,4 @@
-package n2exercici1;
+package n1exercici2;
 
 import java.util.HashMap;
 
