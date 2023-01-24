@@ -2,15 +2,14 @@ package n1exercici1;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+
 import java.util.List;
 
 public class Llistador {
 
     private int iteracions;
 
-    public Llistador(){};
+    public Llistador(){}
 
     public void llistarDiretori(File directori) {
         List<String> listSubDirectoris = new ArrayList<>();
@@ -31,35 +30,13 @@ public class Llistador {
 
     }
 
-    public void llistarFile(File directori, int iteracions) {
-        String espai = "";
-        for (int i = 0; i < iteracions; i++) {
-            espai = espai.concat("  ");
-        }
-        System.out.println(espai + directori.getName());
-    }
-
-    public void llistarDirectory(File directori, int iteracions){
-
-    }
-
-    public void llistarDiretoriArbre(File directori) {
-
-
-        for (File fd : directori.listFiles()) {
-            //Si es un directori torna a executar aquest metode sumantli una iteracio
-            if(fd.isDirectory()){
-                llistarFile(fd,iteracions);
+    public void llistarDirectoriArbre(File directori) {
+        for (File df : directori.listFiles()) {
+            if (df.isDirectory()){
                 this.iteracions = iteracions + 1;
-                llistarDiretoriArbre(fd);
-            } else {
-                llistarFile(fd, this.iteracions);
-            }
+                llistarDirectoriArbre(df);
+            } else if (df.isFile()) //Aqui
 
         }
-
-        iteracions = 0;
-
-
     }
 }
