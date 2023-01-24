@@ -17,7 +17,7 @@ public class TestMain {
     public static Matcher<String> llargada(Matcher<? super Integer> matcher) {
         return new FeatureMatcher<String, Integer>(matcher, "una String d'allargada", "llargada") {
             @Override
-            public Integer featureValueOf(String actual) {
+            protected Integer featureValueOf(String actual) {
                 return actual.length();
             }
         };
