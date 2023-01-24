@@ -1,13 +1,13 @@
 package n2exercici1;
 
 public class n2exercici1 {
-    private String nom;
+    private String lloc;
 
     public n2exercici1() {
-        this.nom = "Pau";
+        this.lloc = "Mordor";
     }
 
-    public String getNom() {
-        return nom;
+    public String getLloc() {
+        return lloc;
     }
 }
