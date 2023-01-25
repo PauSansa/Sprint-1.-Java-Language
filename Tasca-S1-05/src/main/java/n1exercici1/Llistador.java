@@ -25,6 +25,8 @@ public class Llistador {
         this.sdf = new SimpleDateFormat();
     }
 
+
+
     public void llistar() {
         List<String> llistaFiles = new ArrayList<>();
         for (String nomDirectoris : file.list()) {
@@ -82,4 +84,6 @@ public class Llistador {
             pw.flush();
         }
     }
+
+
 }
