@@ -5,6 +5,7 @@ import java.io.File;
 public class n1exercici1M {
 
     public static void main(String[] args) {
-
+        Llistador ll = new Llistador();
+        ll.guardarArbre();
     }
 }
