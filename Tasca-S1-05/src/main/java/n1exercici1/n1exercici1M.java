@@ -7,11 +7,14 @@ public class n1exercici1M {
     public static void main(String[] args) {
         Llistador ll = new Llistador();
 
-        File dir = new File(".");
-        Llistador llAmbFile = new Llistador(dir);
+        File dir = new File(".\\arbre.txt");
+        File obj = new File(".\\llistador.ser");
 
-        ll.llistarArbre();
-        ll.guardarArbre();
-        llAmbFile.llistar();
+
+
+
+        Llistador llDesS = Llistador.cargarLlistador(obj);
+        System.out.println(llDesS.getFile() + " " + llDesS.getPath() + " " + llDesS.isDefault());
     }
+
 }

@@ -4,34 +4,75 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
-public class Llistador {
+public class Llistador implements Serializable {
     private final File file;
     private final String path;
     private final SimpleDateFormat sdf;
+    private final boolean isDefault;
 
-
-    private PrintWriter pw = null;
 
     public Llistador(File file) {
         this.file = file;
         this.path = file.getAbsolutePath();
         this.sdf = new SimpleDateFormat();
+        this.isDefault = false;
     }
 
     public Llistador() {
         this.file = new File(System.getProperty("user.dir"));
         this.path = file.getAbsolutePath();
         this.sdf = new SimpleDateFormat();
+        this.isDefault = true;
     }
 
+    public void llegirArchiu() {
+        if (isDefault || this.file.isDirectory()) {
+            System.out.println("Has d'introduir un path de archiu, no de directori!");
+            return;
+        }
+        try {
+            FileReader fr = new FileReader(this.file);
+            BufferedReader br = new BufferedReader(fr);
+
+            String linea;
+            while((linea= br.readLine()) != null) {
+                System.out.println(linea);
+            }
+
+        } catch (Exception e){
+            System.out.println("Ha ocurregut un error desconegut");
+            e.printStackTrace();
+        }
+    }
+
+    public static Llistador cargarLlistador(File f) {
+        Llistador ll = Serializador.desSerializar(f);
+        return ll;
+    }
+
+    public void guardarLlistador(){
+        try{
+            Serializador.serializar(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void llistar() {
         List<String> llistaFiles = new ArrayList<>();
-        for (String nomDirectoris : file.list()) {
-            llistaFiles.add(nomDirectoris);
+        try {
+            for (String nomDirectoris : file.list()) {
+                llistaFiles.add(nomDirectoris);
+            }
+        } catch (NullPointerException e){
+            System.out.println("El path introduit es un Fitxer, no una carpeta!");
+            return;
         }
+
 
         llistaFiles.sort(String::compareTo);
 
@@ -57,7 +98,8 @@ public class Llistador {
     }
 
     public void guardarArbre() {
-        File pathGuardat = new File(path.concat(File.separator+"arbre.txt"));
+        File pathGuardat = new File(path.concat(File.separator + "arbre.txt"));
+        PrintWriter pw = null;
         try {
             if (!pathGuardat.exists()) {
                 pathGuardat.createNewFile();
@@ -71,19 +113,29 @@ public class Llistador {
 
     }
 
-    private void guardarRecursiu(File nodo, String espai, PrintWriter pwGuardar) {
+    private void guardarRecursiu(File nodo, String espai, PrintWriter pw) {
         if(nodo.isDirectory()){
-            pwGuardar.println("D: "+espai.concat(nodo.getName()) + " -- Ultima modf:  " +  sdf.format(nodo.lastModified()));
-            pwGuardar.flush();
+            pw.println("D: "+espai.concat(nodo.getName()) + " -- Ultima modf:  " +  sdf.format(nodo.lastModified()));
+            pw.flush();
             String[] subNote = nodo.list();
             for(String filename : subNote){
                 guardarRecursiu(new File(nodo, filename), espai.concat("  "), pw);
             }
         } else {
-            pwGuardar.println("F: "+espai.concat(nodo.getName()+ " -- Ultima modf:  " +  sdf.format(nodo.lastModified())));
+            pw.println("F: "+espai.concat(nodo.getName()+ " -- Ultima modf:  " +  sdf.format(nodo.lastModified())));
             pw.flush();
         }
     }
 
+    public File getFile() {
+        return file;
+    }
 
+    public String getPath() {
+        return path;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
 }
