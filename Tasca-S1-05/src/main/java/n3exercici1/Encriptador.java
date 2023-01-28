@@ -1,17 +1,63 @@
 package n3exercici1;
 
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import java.security.NoSuchAlgorithmException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.security.Key;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class Encriptador {
+    private final String ALGORITHM = "AES/ECB/PKCS5Padding";
+    private final byte[] keyValue;
 
-    public static SecretKey creaKey() throws NoSuchAlgorithmException {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(128);
-        SecretKey key = keyGenerator.generateKey();
-        return key;
+    public Encriptador(String keyDe32Caracters) {
+        this.keyValue = keyDe32Caracters.getBytes();
     }
 
+    public  void encripta(String fileInput, String fileOutput) {
+        try {
+            Key key = new SecretKeySpec(keyValue, "AES");
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
+            cipher.init(Cipher.ENCRYPT_MODE, key);
 
+            FileInputStream fis = new FileInputStream(fileInput);
+            byte[] inputBytes = new byte[(int) fis.available()];
+            fis.read(inputBytes);
+
+            byte[] outputBytes = cipher.doFinal(inputBytes);
+
+            FileOutputStream fos = new FileOutputStream(fileOutput);
+            fos.write(outputBytes);
+
+            fis.close();
+            fos.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void desencripta(String fileInput, String fileOutput) {
+        try {
+            Key key = new SecretKeySpec(keyValue, "AES");
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
+            cipher.init(Cipher.DECRYPT_MODE, key);
+
+            FileInputStream fis = new FileInputStream(fileInput);
+            byte[] inputBytes = new byte[(int) fis.available()];
+            fis.read(inputBytes);
+
+            byte[] outputBytes = cipher.doFinal(inputBytes);
+
+            FileOutputStream fos = new FileOutputStream(fileOutput);
+            fos.write(outputBytes);
+
+            fis.close();
+            fos.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
+
