@@ -1,6 +1,6 @@
-package n1exercici1;
+package n1exercici2;
 
-public class TreballadorPresencial extends Treballador{
+public class TreballadorPresencial extends Treballador {
 
     private static int benzina = 40;
     public TreballadorPresencial(String nom, String cognom, int preuHora) {
@@ -12,5 +12,4 @@ public class TreballadorPresencial extends Treballador{
         int salari = (this.getPreuHora() * horesTreballades) + benzina;
         System.out.println(salari + " €");
     }
-
 }
