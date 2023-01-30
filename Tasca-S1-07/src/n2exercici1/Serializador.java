@@ -2,7 +2,6 @@ package n2exercici1;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
