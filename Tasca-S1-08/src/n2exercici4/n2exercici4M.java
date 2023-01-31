@@ -14,17 +14,20 @@ public class n2exercici4M {
         lAlfabetic.sort(String::compareTo);
         lAlfabetic.forEach(System.out::println);
 
+
         System.out.println("\n e Primer: \n");
 
         List<String> lprimerE = new ArrayList<>(llista.stream().toList());
         lprimerE.sort(ePrimer());
         lprimerE.forEach(System.out::println);
 
+
         System.out.println("\n Modificar a x 4: \n");
         List<String> lModificada= new ArrayList<>(llista.stream().toList());
         ListIterator<String> lt = lModificada.listIterator();
         modificaA(lt);
         lModificada.forEach(System.out::println);
+
 
         System.out.println("\n Mostrar Digits \n");
         List<String> lADigits = new ArrayList<>(llista.stream().toList());
