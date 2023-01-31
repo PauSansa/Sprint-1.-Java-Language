@@ -34,7 +34,7 @@ public class n2exercici4M {
         lADigits.forEach((str) -> {
             if (str.matches("[0-9]*")) {
                 System.out.println(str);
-            };
+            }
         });
 
 
