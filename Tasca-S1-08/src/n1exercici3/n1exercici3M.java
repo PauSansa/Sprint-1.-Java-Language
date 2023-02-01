@@ -10,9 +10,7 @@ public class n1exercici3M {
 
     private static void creaLlistamessos() {
         List<String> mesos = Arrays.asList("Gener", "Febrer", "Març","Abril", "Maig", "Juny", "Juliol","Agost", "Septembre","Octubre","Novembre","Desembre");
-        //mesos.forEach(System.out::println);
-        for (String m : mesos) {
-            System.out.println(m);
-        }
+        mesos.forEach((s) -> System.out.println(s));
+
     }
 }

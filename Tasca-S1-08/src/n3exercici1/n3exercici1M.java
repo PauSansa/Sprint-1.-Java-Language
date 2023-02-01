@@ -21,7 +21,8 @@ public class n3exercici1M {
 
         //Printear nom i edat
         System.out.println("\n Printea nom i edat \n");
-        personas.forEach(System.out::println);
+        //cambiar --------------------------------------------------------------------------
+        personas.forEach((p) -> System.out.println(p.getNom() + " " + p.getEdat()));
 
 
         //Printear comença x A
